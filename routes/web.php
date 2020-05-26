@@ -9,3 +9,5 @@ Route::middleware([\App\Http\Middleware\CommonMiddleware::class])->group(functio
     Route::get('/user/login.html', 'UserController@login');
 
 });
+
+Route::post('/user/doLogin', 'UserController@doLogin');
