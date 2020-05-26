@@ -3,10 +3,8 @@
 namespace App\Http\Middleware;
 
 use App\Http\Providers\Helper;
-use App\Repository\Repository;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
 
 class CommonMiddleware
 {
