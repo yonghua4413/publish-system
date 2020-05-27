@@ -5,8 +5,7 @@
         </a>
 
         <ul class="layui-nav fly-nav-user">
-
-            @if($is_login)
+            @if(!$is_login)
             <!-- 未登入的状态 -->
             <li class="layui-nav-item">
                 <a class="iconfont icon-touxiang layui-hide-xs" href="/user/login.html"></a>
@@ -19,21 +18,26 @@
             </li>
             @else
             <!-- 登入后的状态 -->
-            <li class="layui-nav-item">
-              <a class="fly-nav-avatar" href="javascript:;">
-                <cite class="layui-hide-xs">{{$user['user_name']}}</cite>
-                <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息: 作者"></i>
-                <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
-                <img src="{{$user['head_img']}}">
-              </a>
-              <dl class="layui-nav-child">
-                <dd><a href="/user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
-                <dd><a href="/user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
-                <dd><a href="/user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
-                <hr style="margin: 5px 0;">
-                <dd><a href="/user/logout" style="text-align: center;">退出</a></dd>
-              </dl>
-            </li>
+                <li class="layui-nav-item">
+                    <a class="fly-nav-avatar" href="javascript:;">
+                        <cite class="layui-hide-xs">{{$user['user_name']}}</cite>
+                        @if($user['status'])
+                        <i class="iconfont icon-renzheng layui-hide-xs" title="已认证"></i>
+                        @endif
+                        @if(!empty($user['head_img']))
+                            <img src="{{$user['head_img']}}">
+                        @else
+                            <img src="/res/images/avatar/default-user.png"/>
+                        @endif
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+                        <dd><a href="/user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a>
+                        </dd>
+                        <hr style="margin: 5px 0;">
+                        <dd><a href="/user/loginOut" style="text-align: center;">退出</a></dd>
+                    </dl>
+                </li>
             @endif
         </ul>
     </div>

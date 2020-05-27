@@ -10,7 +10,9 @@
 
         <div class="fly-column-right layui-hide-xs">
             <span class="fly-search"><i class="layui-icon"></i></span>
+            @if($is_login)
             <a href="jie/add.html" class="layui-btn layui-btn-primary">我的发布</a>
+            @endif
             <a href="jie/add.html" class="layui-btn">马上发布+</a>
         </div>
     </div>

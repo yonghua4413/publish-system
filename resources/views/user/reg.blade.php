@@ -20,6 +20,7 @@
                 <div class="layui-tab-item layui-show">
                     <div class="layui-form layui-form-pane">
                         <form method="post">
+                            @csrf
                             <div class="layui-form-item">
                                 <label for="email" class="layui-form-label">邮箱</label>
                                 <div class="layui-input-inline">
@@ -30,24 +31,24 @@
                             <div class="layui-form-item">
                                 <label for="username" class="layui-form-label">昵称</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" id="username" name="username" autocomplete="off" class="layui-input">
+                                    <input type="text" id="nickname" name="nickname" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <label for="pass" class="layui-form-label">密码</label>
                                 <div class="layui-input-inline">
-                                    <input type="password" id="pass" name="pass"  autocomplete="off" class="layui-input">
+                                    <input type="password" id="password" name="password"  autocomplete="off" class="layui-input">
                                 </div>
                                 <div class="layui-form-mid layui-word-aux">6到16个字符</div>
                             </div>
                             <div class="layui-form-item">
                                 <label for="repass" class="layui-form-label">确认密码</label>
                                 <div class="layui-input-inline">
-                                    <input type="password" id="repass" name="repass" autocomplete="off" class="layui-input">
+                                    <input type="password" id="repassword" name="repassword" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <button class="layui-btn" lay-filter="*" lay-submit>立即注册</button>
+                                <button id="TencentCaptcha" class="layui-btn" lay-filter="*" lay-submit>立即注册</button>
                             </div>
                         </form>
                     </div>
@@ -59,8 +60,7 @@
 </div>
 
 @include("common.footer")
-
 <script src="/res/layui/layui.js"></script>
-
+@include("user.regCaptcha")
 </body>
 </html>

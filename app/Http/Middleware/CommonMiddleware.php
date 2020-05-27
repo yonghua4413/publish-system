@@ -10,7 +10,7 @@ class CommonMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        $user = $request->session("user");
+        $user = $request->session()->get("user");
         //用户信息
         View()->share('is_login', false);
         if ($user) {
