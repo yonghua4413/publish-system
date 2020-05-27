@@ -21,7 +21,7 @@ class HomeController extends Controller
     {
         $redis_key = "recommend";
         $recommend = Redis::get($redis_key);
-        if ($recommend && count($recommend)) {
+        if ($recommend) {
             return json_decode($recommend, true);
         }
         $repository = app(UserPublishRepository::class);
@@ -47,7 +47,7 @@ class HomeController extends Controller
         }
         $redis_key = "recommend_type_" . $_type;
         $list = Redis::get($redis_key);
-        if ($list && count($list)) {
+        if ($list) {
             return json_decode($list, true);
         }
         $repository = app(UserPublishRepository::class);
