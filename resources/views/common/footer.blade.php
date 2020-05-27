@@ -1,8 +1,4 @@
 <div class="fly-footer">
-    <p><a href="http://fly.layui.com/" target="_blank">Fly社区</a> 2017 &copy; <a href="http://www.layui.com/" target="_blank">layui.com 出品</a></p>
-    <p>
-        <a href="http://fly.layui.com/jie/3147/" target="_blank">付费计划</a>
-        <a href="http://www.layui.com/template/fly/" target="_blank">获取Fly社区模版</a>
-        <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
-    </p>
+    <p> 活动阁社区 {{date("Y")}} &copy; <a href="http://www.huodongge.cn" target="_blank">贵州赛雷互动科技有限公司出品</a></p>
+    <p>黔ICP备16003751号-11</p>
 </div>

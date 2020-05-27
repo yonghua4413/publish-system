@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Http\Providers\Helper;
+use App\Repository\UserPublishRepository;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,10 @@ class CommonMiddleware
 
         //分类
         View()->share("category", app(Helper::class)->getCategory());
+        //友链
         View()->share("blogroll", app(Helper::class)->getBlogroll());
+        //热门用户
+        View()->share("hot_user", app(Helper::class)->getHotUser());
         return $next($request);
     }
 }

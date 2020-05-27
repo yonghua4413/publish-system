@@ -3,8 +3,10 @@
 namespace App\Http\Providers;
 
 use App\Repository\Repository;
+use App\Repository\UserPublishRepository;
 use GuzzleHttp\Client;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 
 class Helper
@@ -85,5 +87,20 @@ class Helper
     {
         $pattern = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/";
         return preg_match($pattern, $email);
+    }
+
+    public function getHotUser($limit = 10)
+    {
+        $redis_key = "host_user";
+        $users = Redis::get($redis_key);
+        if($users) {
+            return json_decode($users, true);
+        }
+        $users = app(UserPublishRepository::class)->getHotUser($limit);
+        if($users) {
+            Redis::setex($redis_key, 30, json_encode($users));
+            return $users;
+        }
+        return null;
     }
 }
