@@ -11,3 +11,6 @@ Route::middleware([\App\Http\Middleware\CommonMiddleware::class])->group(functio
 });
 
 Route::post('/user/doLogin', 'UserController@doLogin');
+Route::get('/user/loginOut', 'UserController@loginOut');
+Route::post('/user/doReg', 'UserController@doReg');
+

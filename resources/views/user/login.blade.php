@@ -39,9 +39,6 @@
                                         class="layui-btn"
                                         lay-filter="*"
                                         lay-submit>立即登录</button>
-                                <span style="padding-left:20px;">
-                  <a href="forget.html">忘记密码？</a>
-                </span>
                             </div>
                         </form>
                     </div>
