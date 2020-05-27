@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    @include("common.seo")
-    @include("common.common_css")
-</head>
-<body>
+@extends("layouts.base")
 
-@include("common.header")
-
-<div class="layui-container fly-marginTop">
+@section("content")
     <div class="fly-panel fly-panel-user" pad20>
         <div class="layui-tab layui-tab-brief" lay-filter="user">
             <ul class="layui-tab-title">
@@ -46,10 +37,8 @@
             </div>
         </div>
     </div>
-</div>
+@endsection
 
-@include("common.footer")
-<script src="/res/layui/layui.js"></script>
-@include("user.loginCaptcha")
-</body>
-</html>
+@section("js")
+    @include("user.loginCaptcha")
+@endsection
