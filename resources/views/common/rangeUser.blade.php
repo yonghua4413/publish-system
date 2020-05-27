@@ -3,7 +3,7 @@
     <dl>
         @foreach($hot_user as $item)
         <dd>
-            <a href="/user/publish{{$item['user_id']}}">
+            <a href="/user/{{$item['user_id']}}.html">
                 <img src="{{$item['head_img']}}"><cite>{{$item['user_name']}}</cite><i>{{$item['num']}} 次发布</i>
             </a>
         </dd>
