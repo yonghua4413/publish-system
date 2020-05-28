@@ -61,7 +61,6 @@
                                     <textarea id="content" name="content" required lay-verify="required" placeholder="详细描述" class="layui-textarea fly-editor" style="height: 260px;"></textarea>
                                 </div>
                             </div>
-
                             <div class="layui-form-item">
                                 <button class="layui-btn" lay-filter="*" lay-submit>立即发布</button>
                             </div>
