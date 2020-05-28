@@ -75,30 +75,14 @@ class UserPublishRepository
         return $data;
     }
 
-    public function getUserInfoById($where = [], $field = ['*'])
-    {
-        return DB::table('user')
-            ->where($where)
-            ->get($field)
-            ->first();
-    }
-
-    public function getUserBlog($where = [],$field = ['*'])
-    {
-        return DB::table('user_publish')
-            ->where($where)
-            ->get($field)
-            ->toArray();
-    }
-
 
     public function getListBySpell(String $spell = "", int $page = 1, int $size = 1)
     {
         return DB::table("category")
-            ->select(["user_publish.*","user.user_name","user.status as user_status","category.name as category_name","category.category_img"])
+            ->select(["user_publish.*", "user.user_name", "user.status as user_status", "category.name as category_name", "category.category_img"])
             ->join("user_publish", "user_publish.category_id", "=", "category.id")
             ->leftJoin("user", "user.id", "=", "user_publish.user_id")
-            ->where(['category.spell'=> $spell])
+            ->where(['category.spell' => $spell])
             ->forPage($page)
             ->paginate($size);
     }
@@ -113,5 +97,22 @@ class UserPublishRepository
             ->where($where)
             ->where(['is_show' => 1, 'is_delete' => 0])
             ->first();
+
+    }
+
+    public function getUserInfoById($where = [], $field = ['*'])
+    {
+        return DB::table('user')
+            ->where($where)
+            ->get($field)
+            ->first();
+    }
+
+    public function getUserBlog($where = [], $field = ['*'])
+    {
+        return DB::table('user_publish')
+            ->where($where)
+            ->get($field)
+            ->toArray();
     }
 }

@@ -11,13 +11,6 @@
         <h1>
             {{$user_info->user_name}}
             <i class="iconfont icon-nan"></i>
-            <!-- <i class="iconfont icon-nv"></i>  -->
-        {{--            <i class="layui-badge fly-badge-vip">VIP3</i>--}}
-        <!--
-            <span style="color:#c00;">（管理员）</span>
-            <span style="color:#5FB878;">（社区之光）</span>
-            <span>（该号已被封）</span>
-            -->
         </h1>
 
         <p style="padding: 10px 0; color: #5FB878;">认证信息：活动阁</p>
@@ -26,9 +19,6 @@
             {{--            <i class="iconfont icon-kiss" title="飞吻"></i><span style="color: #FF7200;">66666 飞吻</span>--}}
             <i class="iconfont icon-shijian"></i><span>{{date('Y-m-d',$user_info->create_time)}} 加入</span>
         </p>
-
-{{--        <p class="fly-home-sign">（人生仿若一场修行）</p>--}}
-
     </div>
 
     <div class="layui-container">
@@ -60,5 +50,3 @@
 
 @endsection
 
-@section('js')
-@endsection
