@@ -75,14 +75,14 @@ class UserPublishRepository
         return $data;
     }
 
-<<<<<<< HEAD
+
     public function getListBySpell(String $spell = "", int $page = 1, int $size = 1)
     {
         return DB::table("category")
-            ->select(["user_publish.*","user.user_name","user.status as user_status","category.name as category_name","category.category_img"])
+            ->select(["user_publish.*", "user.user_name", "user.status as user_status", "category.name as category_name", "category.category_img"])
             ->join("user_publish", "user_publish.category_id", "=", "category.id")
             ->leftJoin("user", "user.id", "=", "user_publish.user_id")
-            ->where(['category.spell'=> $spell])
+            ->where(['category.spell' => $spell])
             ->forPage($page)
             ->paginate($size);
     }
@@ -90,14 +90,15 @@ class UserPublishRepository
     public function getPublishDetail($where = [])
     {
         return DB::table("user_publish")
-            ->select(["user_publish.*","user.user_name","user.head_img",
-                "user.status as user_status","category.name as category_name","category.category_img"])
+            ->select(["user_publish.*", "user.user_name", "user.head_img",
+                "user.status as user_status", "category.name as category_name", "category.category_img"])
             ->leftJoin("user", "user.id", "=", "user_publish.user_id")
             ->leftJoin("category", "category.id", "=", "user_publish.category_id")
             ->where($where)
             ->where(['is_show' => 1, 'is_delete' => 0])
             ->first();
-=======
+    }
+
     public function getUserInfoById($where = [], $field = ['*'])
     {
         return DB::table('user')
@@ -106,12 +107,11 @@ class UserPublishRepository
             ->first();
     }
 
-    public function getUserBlog($where = [],$field = ['*'])
+    public function getUserBlog($where = [], $field = ['*'])
     {
         return DB::table('user_publish')
             ->where($where)
             ->get($field)
             ->toArray();
->>>>>>> fd1dba0eed83361224d88e710fab4e3d30c85c58
     }
 }
