@@ -33,7 +33,7 @@
                                     @if($value->is_recommend == 1)
                                         <span class="fly-jing">荐</span>
                                     @endif
-                                    <a href="" class="jie-title">{{$value->title}}</a>
+                                    <a href="/publish/detail/{{$value->id}}.html" class="jie-title">{{$value->title}}</a>
                                     <i>{{date('Y-m-d h:i:s',$value->create_time)}}</i>
                                     <em class="layui-hide-xs">{{$value->read}}阅</em>
                                 </li>
