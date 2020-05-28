@@ -19,6 +19,12 @@ class PublishController extends Controller
         return view("publish/detail", $data);
     }
 
+    public function showAdd()
+    {
+        $data = $this->data;
+        return view("publish/add", $data);
+    }
+
     private function getPublicById($id)
     {
         $where = ['user_publish.id' => $id];
