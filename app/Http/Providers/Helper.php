@@ -109,7 +109,7 @@ class Helper
         $redis_key = "read_" . $id . '_' . str_replace(".", "_", request()->ip());
         if (!Redis::get($redis_key)) {
             DB::table("user_publish")->where(['id' => $id])->increment('read', 1);
-            Redis::setex($redis_key, "86400", true);
+            Redis::setex($redis_key, 86400, true);
         }
     }
 }
