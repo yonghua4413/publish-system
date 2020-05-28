@@ -2,9 +2,11 @@
 
 @section('content')
     <div class="fly-home fly-panel" style="background-image: url();">
-
-
-        <img src="{{$user_info->head_img}}" alt="{{$user_info->user_name}}">
+        @if(empty($user_info->head_img))
+            <img src="/res/images/avatar/default-user.png" alt="{{$user_info->user_name}}">
+        @else
+            <img src="{{$user_info->head_img}}" alt="{{$user_info->user_name}}">
+        @endif
         {{--        <i class="iconfont icon-renzheng" title="Fly社区认证"></i>--}}
         <h1>
             {{$user_info->user_name}}
