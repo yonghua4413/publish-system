@@ -15,6 +15,7 @@ class PublishController extends Controller
             $data['seo']['keywords'] = "," . $publish['title'];
             $data['seo']['description'] = "|" . $publish['brief'];
         }
+        $this->helper->readAutoIncrement($id);
         return view("publish/detail", $data);
     }
 
