@@ -18,3 +18,4 @@ Route::post('/user/doLogin', 'UserController@doLogin');
 Route::get('/user/loginOut', 'UserController@loginOut');
 Route::post('/user/doReg', 'UserController@doReg');
 
+Route::get('/publish/add.html', 'PublishController@showAdd');
