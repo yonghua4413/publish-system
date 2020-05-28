@@ -27,9 +27,7 @@
                             <div class="layui-form-item">
                                 <button
                                         id="TencentCaptcha"
-                                        class="layui-btn"
-                                        lay-filter="*"
-                                        lay-submit>立即登录</button>
+                                        class="layui-btn">立即登录</button>
                             </div>
                         </form>
                     </div>
