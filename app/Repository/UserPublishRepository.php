@@ -10,7 +10,7 @@ class UserPublishRepository
     public function getRecommend($limit = 5)
     {
         return DB::table("user_publish")
-            ->select(["user_publish.*","user.user_name","user.status as user_status","category.name as category_name","category.category_img"])
+            ->select(["user_publish.*", "user.user_name", "user.status as user_status", "category.name as category_name", "category.category_img"])
             ->leftJoin("user", "user.id", "=", "user_publish.user_id")
             ->leftJoin("category", "category.id", "=", "user_publish.category_id")
             ->where(['is_recommend' => 1, 'is_show' => 1, 'is_delete' => 0])
@@ -23,7 +23,7 @@ class UserPublishRepository
     public function getHot($limit = 15)
     {
         return DB::table("user_publish")
-            ->select(["user_publish.*","user.user_name","user.status as user_status","category.name as category_name","category.category_img"])
+            ->select(["user_publish.*", "user.user_name", "user.status as user_status", "category.name as category_name", "category.category_img"])
             ->leftJoin("user", "user.id", "=", "user_publish.user_id")
             ->leftJoin("category", "category.id", "=", "user_publish.category_id")
             ->where(['is_recommend' => 0, 'is_show' => 1, 'is_delete' => 0])
@@ -36,7 +36,7 @@ class UserPublishRepository
     public function getNew($limit = 15)
     {
         return DB::table("user_publish")
-            ->select(["user_publish.*","user.user_name","user.status as user_status","category.name as category_name","category.category_img"])
+            ->select(["user_publish.*", "user.user_name", "user.status as user_status", "category.name as category_name", "category.category_img"])
             ->leftJoin("user", "user.id", "=", "user_publish.user_id")
             ->leftJoin("category", "category.id", "=", "user_publish.category_id")
             ->where(['is_recommend' => 0, 'is_show' => 1, 'is_delete' => 0])
@@ -55,17 +55,17 @@ class UserPublishRepository
         $user_ids = Arr::pluck($list, 'user_id');
         $users = DB::table("user")
             ->whereIn('id', $user_ids)
-            ->get(['id', "user_name","head_img"])
+            ->get(['id', "user_name", "head_img"])
             ->toArray();
-        if(!$users) {
+        if (!$users) {
             return null;
         }
 
         $data = [];
         foreach ($list as $key => $item) {
             $data[$key] = (array)$item;
-            foreach ($users as $k => $user){
-                if($item->user_id == $user->id){
+            foreach ($users as $k => $user) {
+                if ($item->user_id == $user->id) {
                     $data[$key]['user_name'] = $user->user_name;
                     $data[$key]['head_img'] = $user->head_img ? $user->head_img : "/res/images/avatar/default-user.png";
                     break;
@@ -75,6 +75,7 @@ class UserPublishRepository
         return $data;
     }
 
+<<<<<<< HEAD
     public function getListBySpell(String $spell = "", int $page = 1, int $size = 1)
     {
         return DB::table("category")
@@ -96,5 +97,21 @@ class UserPublishRepository
             ->where($where)
             ->where(['is_show' => 1, 'is_delete' => 0])
             ->first();
+=======
+    public function getUserInfoById($where = [], $field = ['*'])
+    {
+        return DB::table('user')
+            ->where($where)
+            ->get($field)
+            ->first();
+    }
+
+    public function getUserBlog($where = [],$field = ['*'])
+    {
+        return DB::table('user_publish')
+            ->where($where)
+            ->get($field)
+            ->toArray();
+>>>>>>> fd1dba0eed83361224d88e710fab4e3d30c85c58
     }
 }
