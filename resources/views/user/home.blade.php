@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="fly-home fly-panel" style="background-image: url();">
+
+
         <img src="{{$user_info->head_img}}" alt="{{$user_info->user_name}}">
         {{--        <i class="iconfont icon-renzheng" title="Fly社区认证"></i>--}}
         <h1>

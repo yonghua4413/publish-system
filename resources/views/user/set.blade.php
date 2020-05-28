@@ -4,7 +4,7 @@
 <div class="layui-container fly-marginTop fly-user-main">
     <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="user">
         <li class="layui-nav-item">
-            <a href="/user/home/{{$user['id']}}.html">
+            <a href="/user/{{$user['id']}}.html">
                 <i class="layui-icon">&#xe609;</i>
                 我的主页
             </a>

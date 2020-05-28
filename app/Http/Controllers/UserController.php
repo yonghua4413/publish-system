@@ -160,10 +160,8 @@ class UserController extends Controller
 
     public function home()
     {
-
         $id = $this->request->route('id');
-        preg_match('/\d+/', $id, $re);
-        $this->getUserHomeData($re);
+        $this->getUserHomeData($id);
         $data = $this->data;
         return view('user.home', $data);
 

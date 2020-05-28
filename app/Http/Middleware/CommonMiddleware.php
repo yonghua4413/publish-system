@@ -19,15 +19,13 @@ class CommonMiddleware
             View()->share('user', $user);
         }
 
-        //default seo
-        View()->share("seo", ["title" => "", "keywords" => "", "description" => ""]);
-
         //分类
         View()->share("category", app(Helper::class)->getCategory());
         //友链
         View()->share("blogroll", app(Helper::class)->getBlogroll());
         //热门用户
         View()->share("hot_user", app(Helper::class)->getHotUser());
+        View()->share("spell", null);
         return $next($request);
     }
 }
