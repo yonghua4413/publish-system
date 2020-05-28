@@ -8,9 +8,9 @@ Route::middleware([\App\Http\Middleware\CommonMiddleware::class])->group(functio
     Route::get('/user/forget.html', 'UserController@forget');
     Route::get('/user/login.html', 'UserController@login');
 
-    Route::get('/category/{string}.html', 'CategoryController@showCategory');
+    Route::get('/category/{spell}.html', 'CategoryController@showCategory')->where('spell', '[A-Za-z]+');
 
-    Route::get('/publish/detail/{number}.html', 'PublishController@showDetail');
+    Route::get('/publish/detail/{id}.html', 'PublishController@showDetail')->where('id', '[0-9]+');
 
 });
 
