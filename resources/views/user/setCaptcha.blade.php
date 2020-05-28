@@ -1,6 +1,5 @@
 <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
 <script>
-    console.log(layui);
     var appId = "{{env('CAPTCHA_APP_ID')}}";
     var Token = "{{@csrf_token()}}";
     layui.use(['layer', 'jquery','upload'], function () {
@@ -11,8 +10,7 @@
         //普通图片上传
         var uploadInst = upload.render({
             elem: '#upload'
-            ,url: 'https://imgkr.com/api/files/upload' //改成您自己的上传接口
-            ,headers:{_token:Token}
+            ,url: 'https://apis.huodongge.cn/file/upload' //改成您自己的上传接口
             ,before: function(obj){
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
@@ -20,13 +18,14 @@
                 });
             }
             ,done: function(res){
+
                 //如果上传失败
-                if(res.code == 200){
+                if(res.status == 0){
                     var email = $("#email").val().trim();
                     var _data = {
                         '_token': $('input[name="_token"]').val(),
                         'email': email,
-                        'head_img': res.data
+                        'head_img': res.data.url
                     };
                     $.post("/user/setHeadImg", _data, function (data) {
                         if(data.status == 0) {
