@@ -18,6 +18,11 @@ class Controller extends BaseController
         'pageSize' => 10,
         'totalPage' => 1,
         'totalRow' => 0,
+        "seo" => [
+            "title" => "",
+            "keywords" => "",
+            "description" => ""
+        ]
     ];
 
     public $request;

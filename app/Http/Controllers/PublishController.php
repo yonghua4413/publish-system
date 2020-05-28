@@ -9,7 +9,12 @@ class PublishController extends Controller
     public function showDetail($id)
     {
         $data = $this->data;
-        $data['publish'] = $this->getPublicById($id);
+        $data['publish'] = $publish =  $this->getPublicById($id);
+        if($publish) {
+            $data['seo']['title'] = '|' . $publish['title'];
+            $data['seo']['keywords'] = "," . $publish['title'];
+            $data['seo']['description'] = "|" . $publish['brief'];
+        }
         return view("publish/detail", $data);
     }
 
