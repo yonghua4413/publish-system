@@ -85,4 +85,16 @@ class UserPublishRepository
             ->forPage($page)
             ->paginate($size);
     }
+
+    public function getPublishDetail($where = [])
+    {
+        return DB::table("user_publish")
+            ->select(["user_publish.*","user.user_name","user.head_img",
+                "user.status as user_status","category.name as category_name","category.category_img"])
+            ->leftJoin("user", "user.id", "=", "user_publish.user_id")
+            ->leftJoin("category", "category.id", "=", "user_publish.category_id")
+            ->where($where)
+            ->where(['is_show' => 1, 'is_delete' => 0])
+            ->first();
+    }
 }
