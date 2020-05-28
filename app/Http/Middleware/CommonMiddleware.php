@@ -19,9 +19,6 @@ class CommonMiddleware
             View()->share('user', $user);
         }
 
-        //default seo
-        View()->share("seo", ["title" => "", "keywords" => "", "description" => ""]);
-
         //分类
         View()->share("category", app(Helper::class)->getCategory());
         //友链
