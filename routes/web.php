@@ -10,7 +10,7 @@ Route::middleware([\App\Http\Middleware\CommonMiddleware::class])->group(functio
     Route::get('/category/{spell}.html', 'CategoryController@showCategory')->where('spell', '[A-Za-z]+');
     Route::get('/publish/detail/{id}.html', 'PublishController@showDetail')->where('id', '[0-9]+');
     Route::get('/user/set.html', 'UserController@set');
-    Route::get('/user/home/{id}', 'UserController@home');
+    Route::get('/user/{id}', 'UserController@home');
 
 });
 
