@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <button id="TencentCaptcha" class="layui-btn" lay-filter="*" lay-submit>立即注册</button>
+                                <button id="TencentCaptcha" class="layui-btn">立即注册</button>
                             </div>
                         </form>
                     </div>
