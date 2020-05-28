@@ -8,6 +8,8 @@ Route::middleware([\App\Http\Middleware\CommonMiddleware::class])->group(functio
     Route::get('/user/forget.html', 'UserController@forget');
     Route::get('/user/login.html', 'UserController@login');
 
+    Route::get('/category/{string}.html', 'CategoryController@showCategory');
+
 });
 
 Route::post('/user/doLogin', 'UserController@doLogin');

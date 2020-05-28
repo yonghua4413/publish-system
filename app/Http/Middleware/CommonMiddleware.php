@@ -28,6 +28,7 @@ class CommonMiddleware
         View()->share("blogroll", app(Helper::class)->getBlogroll());
         //热门用户
         View()->share("hot_user", app(Helper::class)->getHotUser());
+        View()->share("spell", null);
         return $next($request);
     }
 }

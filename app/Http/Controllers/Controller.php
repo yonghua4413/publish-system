@@ -13,7 +13,12 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public $data = [];
+    public $data = [
+        'page' => 1,
+        'pageSize' => 10,
+        'totalPage' => 1,
+        'totalRow' => 0,
+    ];
 
     public $request;
 
