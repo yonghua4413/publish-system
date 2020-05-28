@@ -59,6 +59,11 @@ class UserController extends Controller
     {
         try {
             $post = $this->request->all();
+            $captcha = $this->helper->checkCaptcha($post['ticket'], $post['randstr']);
+            if ($captcha) {
+                return $this->helper->returnJson($captcha);
+            }
+            unset($post['_token'], $post['ticket'], $post['randstr']);
 
             $email = Arr::get($post, 'email', null);
             $user_name = Arr::get($post, 'user_name', null);

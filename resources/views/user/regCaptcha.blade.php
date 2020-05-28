@@ -18,6 +18,7 @@
                 var user_name = $("#nickname").val().trim();
                 var password = $("#password").val().trim();
                 var repassword = $("#repassword").val().trim();
+
                 if(email == "" || email == undefined){
                     return layer.alert("账户不能为空！", {icon: 2,'title':"系统提示"});
                 }
