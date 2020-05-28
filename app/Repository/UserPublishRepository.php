@@ -97,6 +97,7 @@ class UserPublishRepository
             ->where($where)
             ->where(['is_show' => 1, 'is_delete' => 0])
             ->first();
+
     }
 
     public function getUserInfoById($where = [], $field = ['*'])

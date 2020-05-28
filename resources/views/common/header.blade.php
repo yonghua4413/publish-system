@@ -32,8 +32,7 @@
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="/user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
-                        <dd><a href="/user/{{$user['id']}}.html"><i class="layui-icon"
-                                                                    style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a>
+                        <dd><a href="/user/{{$user['id']}}.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a>
                         </dd>
                         <hr style="margin: 5px 0;">
                         <dd><a href="/user/loginOut" style="text-align: center;">退出</a></dd>
