@@ -29,13 +29,13 @@ class Helper
     {
         $redis_key = "category";
         $category = Redis::get($redis_key);
-        if($category) {
+        if ($category) {
             return json_decode($category, true);
         }
         $repository = app(Repository::class);
         $repository->limit = 10;
         $category = $repository->getList("category", [], ['*']);
-        foreach ($category as $key => $item){
+        foreach ($category as $key => $item) {
             $category[$key] = (array)$item;
         }
         Redis::setex($redis_key, env('REDIS_LIFETIME'), json_encode($category));
@@ -46,13 +46,13 @@ class Helper
     {
         $redis_key = "blogroll";
         $blogroll = Redis::get($redis_key);
-        if($blogroll) {
+        if ($blogroll) {
             return json_decode($blogroll, true);
         }
         $repository = app(Repository::class);
         $repository->limit = 10;
         $blogroll = $repository->getList("blogroll", [], ['*']);
-        foreach ($blogroll as $key => $item){
+        foreach ($blogroll as $key => $item) {
             $blogroll[$key] = (array)$item;
         }
         Redis::setex($redis_key, env('REDIS_LIFETIME'), json_encode($blogroll));
@@ -93,14 +93,23 @@ class Helper
     {
         $redis_key = "host_user";
         $users = Redis::get($redis_key);
-        if($users) {
+        if ($users) {
             return json_decode($users, true);
         }
         $users = app(UserPublishRepository::class)->getHotUser($limit);
-        if($users) {
+        if ($users) {
             Redis::setex($redis_key, 30, json_encode($users));
             return $users;
         }
         return null;
+    }
+
+    public function readAutoIncrement($id)
+    {
+        $redis_key = "read_" . $id . '_' . str_replace(".", "_", request()->ip());
+        if (!Redis::get($redis_key)) {
+            DB::table("user_publish")->where(['id' => $id])->increment('read', 1);
+            Redis::setex($redis_key, "86400", true);
+        }
     }
 }
