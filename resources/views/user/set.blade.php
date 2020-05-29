@@ -43,7 +43,7 @@
                             <div class="layui-input-inline">
                                 <input type="text" id="email" name="email" required lay-verify="email" autocomplete="off" value="{{$user['email']}}" class="layui-input">
                             </div>
-                            <div class="layui-form-mid layui-word-aux">如您为激活,请发送邮件到yh@gmail.com,进行人工审核</div>
+                            <div class="layui-form-mid layui-word-aux">如您为激活,请发送邮件到254274509@qq.com,进行人工审核</div>
                         </div>
                         <div class="layui-form-item">
                             <label for="L_username" class="layui-form-label">昵称</label>
@@ -51,14 +51,7 @@
                                 <input type="text" id="L_username" name="username" required lay-verify="required" autocomplete="off" value="{{$user['user_name']}}" class="layui-input">
                             </div>
                         </div>
-{{--                        <div class="layui-form-item layui-form-text">--}}
-{{--                            <label for="L_sign" class="layui-form-label">签名</label>--}}
-{{--                            <div class="layui-input-block">--}}
-{{--                                <textarea placeholder="随便写些什么刷下存在感" id="L_sign"  name="sign" autocomplete="off" class="layui-textarea" style="height: 80px;"></textarea>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                         <div class="layui-form-item">
-{{--                            <button class="layui-btn"  lay-filter="*" lay-submit>确认修改</button>--}}
                         </div>
                     </form>
                 </div>

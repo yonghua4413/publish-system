@@ -9,6 +9,7 @@ Route::middleware([\App\Http\Middleware\CommonMiddleware::class])->group(functio
     Route::get('/publish/detail/{id}.html', 'PublishController@showDetail')->where('id', '[0-9]+');
     Route::get('/user/set.html', 'UserController@set');
     Route::get('/user/{id}.html', 'UserController@home')->where('id', '[0-9]+');
+    Route::get('/publish/modify/{id}.html', 'PublishController@showModify')->where('id', '[0-9]+');
 });
 
 Route::post('/user/doLogin', 'UserController@doLogin');
@@ -17,3 +18,5 @@ Route::post('/user/doReg', 'UserController@doReg');
 Route::post('/user/rePass', 'UserController@rePass');
 Route::post('/user/setHeadImg', 'UserController@setUserHeadImg');
 Route::get('/publish/add.html', 'PublishController@showAdd');
+
+Route::post('/publish/doAdd', 'PublishController@doAdd');

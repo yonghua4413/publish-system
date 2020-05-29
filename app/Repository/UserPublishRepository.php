@@ -95,9 +95,8 @@ class UserPublishRepository
             ->leftJoin("user", "user.id", "=", "user_publish.user_id")
             ->leftJoin("category", "category.id", "=", "user_publish.category_id")
             ->where($where)
-            ->where(['is_show' => 1, 'is_delete' => 0])
+            ->where(['is_delete' => 0])
             ->first();
-
     }
 
     public function getUserInfoById($where = [], $field = ['*'])

@@ -2,6 +2,7 @@
 
 @section("content")
     <div class="fly-panel detail-box">
+        @if($publish)
         <h1>{{$publish['title']}}</h1>
         <div class="fly-detail-info" style="text-align: right;">
             <span><i class="iconfont" title="人气">&#xe60b;</i> {{$publish['read']}}</span>
@@ -19,9 +20,17 @@
                 </a>
                 <span>{{$publish['create_time']}}</span>
             </div>
+            @if($user['id'] == $publish['user_id'])
+            <div class="detail-hits">
+                <span class="layui-btn layui-btn-xs jie-admin" type="edit"><a href="/publish/modify/{{$publish['id']}}.html">编辑此贴</a></span>
+            </div>
+            @endif
         </div>
-        <div class="detail-body">
-            <p>{!! html_entity_decode($publish['content']) !!}</p>
+        <div id="content" class="detail-body">
+            {!! html_entity_decode($publish['content']) !!}
         </div>
+        @else
+            <h1>内容不存在或正在审核中</h1>
+        @endif
     </div>
 @endsection

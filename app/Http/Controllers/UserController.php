@@ -49,6 +49,7 @@ class UserController extends Controller
             }
             unset($user->password);
             session()->put("user", (array)$user);
+            $_SESSION['user'] = (array)$user;
             return $this->helper->returnJson([0, ["redirect" => "/"], "登陆成功！"]);
         } catch (\Exception $exception) {
             return $this->helper->returnJson([1, [], $exception->getMessage()]);

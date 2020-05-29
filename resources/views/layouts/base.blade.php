@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     @include("common.seo")
     @include("common.common_css")
+    @yield("css")
 </head>
 <body>
 
