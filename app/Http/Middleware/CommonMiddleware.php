@@ -14,6 +14,7 @@ class CommonMiddleware
         $user = $request->session()->get("user");
         //用户信息
         View()->share('is_login', false);
+        View()->share('user', null);
         if ($user) {
             View()->share('is_login', true);
             View()->share('user', $user);
