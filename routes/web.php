@@ -10,6 +10,7 @@ Route::middleware([\App\Http\Middleware\CommonMiddleware::class])->group(functio
     Route::get('/user/set.html', 'UserController@set');
     Route::get('/user/{id}.html', 'UserController@home')->where('id', '[0-9]+');
     Route::get('/publish/modify/{id}.html', 'PublishController@showModify')->where('id', '[0-9]+');
+    Route::get('/search', 'SearchController@showSearch');
 });
 
 Route::post('/user/doLogin', 'UserController@doLogin');

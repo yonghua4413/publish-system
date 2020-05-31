@@ -87,6 +87,17 @@ class UserPublishRepository
             ->paginate($size);
     }
 
+    public function getListByTitle(String $title = "", int $page = 1, int $size = 1)
+    {
+        return DB::table("user_publish")
+            ->select(["user_publish.*", "user.user_name", "user.status as user_status", "category.name as category_name", "category.category_img"])
+            ->leftJoin("category", "category.id", "=", "user_publish.category_id")
+            ->leftJoin("user", "user.id", "=", "user_publish.user_id")
+            ->where([['user_publish.title', "like", $title], ['is_show', '=', 1]])
+            ->forPage($page)
+            ->paginate($size);
+    }
+
     public function getPublishDetail($where = [])
     {
         return DB::table("user_publish")
