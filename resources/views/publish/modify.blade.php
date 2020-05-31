@@ -18,6 +18,7 @@
                     <div class="layui-tab-item layui-show">
                         <form action="" method="post">
                             @csrf
+                            <input type="hidden" name="id" value="{{$publish->id}}">
                             <div class="layui-row layui-col-space15 layui-form-item">
                                 <div class="layui-col-md3">
                                     <label class="layui-form-label">所在专栏</label>
@@ -25,7 +26,11 @@
                                         <select id="category_id" name="category_id" lay-filter="column">
                                             <option value="0">--请选择--</option>
                                             @foreach($category as $item)
-                                                <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                @if($publish->category_id == $item['id'])
+                                                    <option selected value="{{$item['id']}}">{{$item['name']}}</option>
+                                                @else
+                                                    <option value="{{$item['id']}}">{{$item['name']}}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
@@ -33,7 +38,7 @@
                                 <div class="layui-col-md9">
                                     <label for="title" class="layui-form-label">标题</label>
                                     <div class="layui-input-block">
-                                        <input type="text" id="title" name="title" autocomplete="off" class="layui-input">
+                                        <input type="text" id="title" name="title" value="{{$publish->title}}" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +47,7 @@
                                 <div class="layui-col-md12">
                                     <label for="brief" class="layui-form-label">简介</label>
                                     <div class="layui-input-block">
-                                        <input type="text" id="brief" name="brief" autocomplete="off" class="layui-input">
+                                        <input type="text" id="brief" name="brief" value="{{$publish->brief}}" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +56,7 @@
                                 <div class="layui-col-md6">
                                     <label for="cover_img" class="layui-form-label">封面图</label>
                                     <div class="layui-input-block">
-                                        <input type="text" id="cover_img" name="cover_img" autocomplete="off" class="layui-input">
+                                        <input type="text" id="cover_img" name="cover_img" value="{{$publish->cover_img}}" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-col-md3">
@@ -63,7 +68,7 @@
 
                             <div class="layui-form-item layui-form-text">
                                 <div class="layui-input-block">
-                                    <script id="container" height="500" name="content" type="text/plain"></script>
+                                    <script id="container" height="500" name="content" type="text/plain">{!! html_entity_decode($publish->content) !!}</script>
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -81,7 +86,7 @@
 @section("js")
 <script>var appId = "{{env('CAPTCHA_APP_ID')}}";</script>
 <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
-<script src="/js/user/publish.js"></script>
+<script src="/js/user/publish_modify.js"></script>
 <script src="/js/jquery-3.0.0.min.js"></script>
 <script type="text/javascript" src="/editor/ueditor.config.js"></script>
 <!-- 编辑器源码文件 -->

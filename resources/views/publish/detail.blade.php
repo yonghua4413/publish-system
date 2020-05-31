@@ -3,7 +3,11 @@
 @section("content")
     <div class="fly-panel detail-box">
         @if($publish)
-        <h1>{{$publish['title']}}</h1>
+            @if($publish['is_show'] == 0)
+                <h1>{{$publish['title']}}【未审核完成】</h1>
+            @else
+                <h1>{{$publish['title']}}</h1>
+            @endif
         <div class="fly-detail-info" style="text-align: right;">
             <span><i class="iconfont" title="人气">&#xe60b;</i> {{$publish['read']}}</span>
         </div>

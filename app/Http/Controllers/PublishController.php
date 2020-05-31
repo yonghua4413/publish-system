@@ -102,9 +102,65 @@ class PublishController extends Controller
         }
     }
 
+    public function doModify()
+    {
+        try {
+            $post = $this->request->all();
+            $captcha = $this->helper->checkCaptcha($post['ticket'], $post['randstr']);
+            if ($captcha) {
+                return $this->helper->returnJson($captcha);
+            }
+            unset($post['_token'], $post['ticket'], $post['randstr']);
+
+            $id = Arr::get($post, "id", 0);
+            $title = Arr::get($post, "title", "");
+            $category_id = Arr::get($post, "category_id", 0);
+            $brief = Arr::get($post, "brief", "");
+            $cover_img = Arr::get($post, "cover_img", "");
+            $content = Arr::get($post, "content", "");
+
+            if (empty($title)) {
+                return $this->helper->returnJson([1, [], "标题不能为空！"]);
+            }
+            if (empty($category_id)) {
+                return $this->helper->returnJson([1, [], "栏目不能为空！"]);
+            }
+            if (empty($brief)) {
+                return $this->helper->returnJson([1, [], "简介不能为空！"]);
+            }
+            if (empty($content)) {
+                return $this->helper->returnJson([1, [], "详情不能为空！"]);
+            }
+            $user_id = Arr::get(session()->get('user'), 'id', 0);
+            $update_data = [
+                'title' => $title,
+                'user_id' => $user_id,
+                'category_id' => $category_id,
+                'brief' => $brief,
+                'cover_img' => $cover_img ? $cover_img : "",
+                'content' => htmlspecialchars($content),
+                'is_show' => 0,
+                'update_time' => time()
+            ];
+            $where = [
+                'id' => $id,
+                'user_id' => $user_id
+            ];
+            $change = app(Repository::class)->update("user_publish", $where, $update_data);
+            if ($change) {
+                return $this->helper->returnJson([0, ['redirect' => "/publish/detail/{$id}.html"], "修改成功, 请耐心等待审核"]);
+            }
+            return $this->helper->returnJson([1, [], "请重试！"]);
+        } catch (\Exception $exception) {
+            return $this->helper->returnJson([1, [], $exception->getMessage()]);
+        }
+    }
+
     public function showModify($id)
     {
         $data = $this->data;
+        $where = ['user_publish.id' => $id];
+        $data['publish'] = app(UserPublishRepository::class)->getPublishDetail($where);
         return view("publish/modify", $data);
     }
 }

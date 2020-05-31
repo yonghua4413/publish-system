@@ -1,6 +1,7 @@
 @extends("layouts.base")
 
 @section("css")
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link href="/editor/themes/default/css/ueditor.css" type="text/css" rel="stylesheet">
 @endsection
 

@@ -20,3 +20,6 @@ Route::post('/user/setHeadImg', 'UserController@setUserHeadImg');
 Route::get('/publish/add.html', 'PublishController@showAdd');
 
 Route::post('/publish/doAdd', 'PublishController@doAdd');
+Route::post('/publish/doModify', 'PublishController@doModify');
+
+Route::match(['get', 'post'], '/editor/upload', 'UploadController@method');

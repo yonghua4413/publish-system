@@ -19,7 +19,7 @@ layui.use(['upload', "layer", "jquery"], function(){
         }
     });
 
-    layer.alert("每次修改都需要重新审核通才可见，请一次性编写完整哦！");
+    layer.alert("每次修改后都需要重新审核通才可见");
 
     //提交
     $(function () {
@@ -54,7 +54,7 @@ layui.use(['upload', "layer", "jquery"], function(){
                     layer.msg("验证成功，正在提交！", {icon: 1});
                     var _data = $("form").serialize();
                     _data += "&ticket=" + res.ticket + "&randstr=" + res.randstr;
-                    $.post("/publish/doAdd", _data, function (data) {
+                    $.post("/publish/doModify", _data, function (data) {
                         if(data.status == 0) {
                             layer.alert(data.message, function () {
                                 window.location.href = data.data.redirect;
